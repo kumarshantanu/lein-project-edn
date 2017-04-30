@@ -8,7 +8,7 @@ Leiningen plugin to emit project details as [EDN](https://github.com/edn-format/
 Install as a project-level plugin by editing `project.clj` as follows:
 
 ```clojure
-  :plugins [[lein-project-edn "0.1.0-SNAPSHOT"]]
+  :plugins [[lein-project-edn "0.1.0"]]
   :project-edn {:output-file "resources/project.edn"  ; file name to output EDN (optional, default: STDOUT)
                 :verify-edn? true                     ; whether verify EDN by parsing (optional, default: true)
                 }

@@ -1,6 +1,6 @@
 # TODO & Change Log
 
-## [WIP] 0.1.0 / 2017-May-??
+## 0.1.0 / 2017-May-01
 ### Added
 - Emit project details as EDN
 - Plugin options
