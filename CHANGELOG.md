@@ -1,5 +1,14 @@
 # TODO & Change Log
 
+## TODO
+
+- Plugin options
+  - `:select-keys`
+  - `:remove-keys`
+  - `:output-prefix`
+  - `:output-suffix`
+
+
 ## 0.1.0 / 2017-May-01
 ### Added
 - Emit project details as EDN
