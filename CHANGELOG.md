@@ -8,10 +8,10 @@ None
 ## [WIP] 0.2.0 / 2017-May-??
 
 - Plugin options
-  - [TODO] `:select-keys`
-  - [TODO] `:remove-keys`
-  - [TODO] `:output-prefix`
-  - [TODO] `:output-suffix`
+  - `:select-keys`   - only specified keys are selected from project map
+  - `:remove-keys`   - specified keys are removed, default: `[:injections :uberjar-merge-with]`
+  - `:output-prefix` - string prefix for the generated EDN output
+  - `:output-suffix` - string suffix for the generated EDN output
 
 
 ## 0.1.0 / 2017-May-01

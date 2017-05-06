@@ -8,6 +8,7 @@
 
 
 (ns leiningen.project-edn
+  (:refer-clojure :exclude [select-keys])
   (:require
     [clojure.edn    :as edn]
     [clojure.pprint :as pp]
@@ -56,25 +57,35 @@
   "Emit project map as EDN."
   [{:keys [project-edn]
     :as project}]
-  (let [{:keys [output-file
+  (let [{:keys [output-prefix
+                output-suffix
+                output-file
+                select-keys
+                remove-keys
                 verify-edn?]
-         :or {verify-edn? true}} project-edn
-        nor-proj (->> (dissoc project :injections)  ; remove Leiningen's monkey-patching thunk when running tests
-                   normalize)
+         :or {remove-keys [:injections  ; Leiningen's monkey-patching thunk when running tests
+                           :uberjar-merge-with]
+              verify-edn? true}} project-edn
+        nor-proj (as-> project <>
+                   (clojure.core/select-keys <> (or select-keys (keys project)))
+                   (apply dissoc <> remove-keys)
+                   (normalize <>))
         edn-text (->> (keys nor-proj)
                    sort
                    (mapcat (fn [k] [k (get nor-proj k)]))
                    (apply array-map)
                    pp/pprint
-                   with-out-str)]
+                   with-out-str)
+        out-text (str output-prefix edn-text output-suffix)]
     (when verify-edn?
       (try
         (edn/read-string edn-text)
         (catch Exception e
+          (.printStackTrace e)
           (lmain/abort (str "[lein-project-edn] Error parsing generated EDN:\n" edn-text)))))
     (if output-file
-      (spit output-file edn-text)
-      (println edn-text))))
+      (spit output-file out-text)
+      (println out-text))))
 
 
 (defn project-edn
