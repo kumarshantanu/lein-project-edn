@@ -2,11 +2,16 @@
 
 ## TODO
 
+None
+
+
+## [WIP] 0.2.0 / 2017-May-??
+
 - Plugin options
-  - `:select-keys`
-  - `:remove-keys`
-  - `:output-prefix`
-  - `:output-suffix`
+  - [TODO] `:select-keys`
+  - [TODO] `:remove-keys`
+  - [TODO] `:output-prefix`
+  - [TODO] `:output-suffix`
 
 
 ## 0.1.0 / 2017-May-01
