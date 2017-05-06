@@ -5,7 +5,7 @@
 None
 
 
-## [WIP] 0.2.0 / 2017-May-??
+## 0.2.0 / 2017-May-07
 
 - Plugin options
   - `:select-keys`   - only specified keys are selected from project map
