@@ -8,16 +8,16 @@ Leiningen plugin to emit project details as [EDN](https://github.com/edn-format/
 Install as a project-level plugin by editing `project.clj` as follows:
 
 ```clojure
-  :plugins [[lein-project-edn "0.2.0"]]
-  ;; plugin config is optional, provide only what you need
-  :project-edn {:output-file "resources/project.edn"  ; file name to output EDN (default STDOUT)
-                :output-prefix ";; Auto-generated\n"  ; string prefix for the generated EDN output (default: empty)
-                :output-suffix ";; End of auto-gen\n" ; string suffix for the generated EDN output (default: empty)
-                :select-keys [:dependencies :version] ; keys to select from project map (default: all keys)
-                :remove-keys [:test-selectors]        ; keys for removal (default [:injections :uberjar-merge-with])
-                :verify-edn? true                     ; whether verify EDN by parsing (default: true)
-                }
-  :hooks [leiningen.project-edn/activate]  ; optional, when enabled auto-triggers on compile (i.e. test/jar etc)
+:plugins [[lein-project-edn "0.2.0"]]
+;; plugin config is optional, provide only what you need
+:project-edn {:output-file "resources/project.edn"  ; file name to output EDN (default STDOUT)
+              :output-prefix ";; Auto-generated\n"  ; string prefix for the generated EDN output (default: empty)
+              :output-suffix ";; End of auto-gen\n" ; string suffix for the generated EDN output (default: empty)
+              :select-keys [:dependencies :version] ; keys to select from project map (default: all keys)
+              :remove-keys [:test-selectors]        ; keys for removal (default [:injections :uberjar-merge-with])
+              :verify-edn? true                     ; whether verify EDN by parsing (default: true)
+              }
+:hooks [leiningen.project-edn/activate]  ; optional, when enabled auto-triggers on compile (i.e. test/jar etc)
 ```
 
 The above example outputs project details into `resources/project.edn` with each of the following commands:
