@@ -10,9 +10,10 @@
 (ns leiningen.project-edn
   (:refer-clojure :exclude [select-keys])
   (:require
-    [clojure.edn    :as edn]
-    [clojure.pprint :as pp]
-    [robert.hooke   :as hooke]
+    [clojure.edn     :as edn]
+    [clojure.java.io :as io]
+    [clojure.pprint  :as pp]
+    [robert.hooke    :as hooke]
     [leiningen.core.main :as lmain]
     [leiningen.compile   :as lcompile])
   (:import
@@ -60,11 +61,13 @@
   (let [{:keys [output-prefix
                 output-suffix
                 output-file
+                output-mkdirs?
                 select-keys
                 remove-keys
                 verify-edn?]
          :or {remove-keys [:injections  ; Leiningen's monkey-patching thunk when running tests
                            :uberjar-merge-with]
+              output-mkdirs? true
               verify-edn? true}} project-edn
         nor-proj (as-> project <>
                    (clojure.core/select-keys <> (or select-keys (keys project)))
@@ -84,7 +87,10 @@
           (.printStackTrace e)
           (lmain/abort (str "[lein-project-edn] Error parsing generated EDN:\n" edn-text)))))
     (if output-file
-      (spit output-file out-text)
+      (do
+        (when output-mkdirs?
+          (io/make-parents output-file))
+        (spit output-file out-text))
       (println out-text))))
 
 
