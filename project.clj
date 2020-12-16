@@ -1,4 +1,4 @@
-(defproject lein-project-edn "0.2.0"
+(defproject lein-project-edn "0.2.1-SNAPSHOT"
   :description "Leiningen plugin to emit project details as EDN"
   :url "https://github.com/kumarshantanu/lein-project-edn"
   :license {:name "Eclipse Public License"

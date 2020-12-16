@@ -5,6 +5,12 @@
 None
 
 
+## [WIP] 0.2.1 / 2020-December-??
+
+- Plugin options
+  - [Todo] `:output-mkdirs?` - create parent directories if required
+
+
 ## 0.2.0 / 2017-May-07
 
 - Plugin options
